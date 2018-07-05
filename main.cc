@@ -15,6 +15,5 @@ int main(){
         make_choice();
         update_records();
     }
-    cout<<"Kamila";
     return 0;
 }
