@@ -13,10 +13,10 @@
 
 using namespace std;
 
-bool running = true
+bool running = true;
 
 void make_choice(){
-    
+    cout<<" KOR ";
 }
 
 void update_records(){
@@ -24,9 +24,10 @@ void update_records(){
 }
 
 int main(){
-    while(true){
+    while(running){
         make_choice();
-        upadte_records();
+        update_records();
     }
-    return 0
+    cout<<"Kamila";
+    return 0;
 }
