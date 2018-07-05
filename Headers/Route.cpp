@@ -1,56 +1,31 @@
 #include "Classes/Route.h"
 
 
-/* Methods */
-Route::Route(): locations(new string[2]){
-	// Error Protection
-}
-
-Route::~Route(){
-	delete[] locations;
-}
-
-void Route::push(string Location, bool Station){
-	this-> locations[Station] = Location;
-}
-
-void Route::stripLocations(){
-	stringstream Stream(this-> route);
-	bool Station; // Depart or arrive
-	string Location, Temp;
-	while(Stream >> Temp){
-		if(Temp == "-"){
-			if(Location.back() == ' ') Location.pop_back();
-			this-> push(Location, Station);
-			Station = true;
-			Location.clear();
-		}
-		else if(Temp.back() == '-'){
-			Temp.pop_back();
-			Location += Temp;
-			this-> push(Location, Station);
-			Station = true;
-			Location.clear();
-		}
-		else Location += Temp + " ";
-	}
-	this-> push(Location, Station);
-}
-
-
 /* Operators overloading */
-void Route::operator=(const string& Route){
-	this->route = Route;
-//	this->stripLocations();
+void Route::operator=(string full_route){
+	for(int i = 0; i < full_route.length(); ++i)
+		if( !((full_route[i] >= 'a' && full_route[i] <= 'z') || 
+			(full_route[i] >= 'A' && full_route[i] <= 'Z') || 
+			full_route[i] == ' ') ){ // Remove all unnecessary symbols
+			
+			full_route.erase(i, 1);
+			i--;
+			
+		}
+	stringstream string_stream(full_route);
+	string_stream >> this-> departure >> this-> arrival;
 }
 
-ostream& operator<<(ostream& Stream, const Route& Flight){
-	return Stream << Flight.route;
+ostream& operator<<(ostream& output_stream, const Route& flight){
+	string full_route = flight.departure + " - " + flight.arrival;
+	return output_stream << full_route;
 }
 
-istream& operator>>(istream& Stream, Route& Flight){
-	getline(Stream, Flight.route);
-//	Flight.stripLocations();
-	return Stream;
+istream& operator>>(istream& input_stream, Route& flight_route){
+	// cin getline the Route in a string and calls operator=
+	string route_as_string;
+	getline(input_stream, route_as_string);
+	flight_route = route_as_string;
+	return input_stream;
 }
 

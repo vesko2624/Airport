@@ -1,38 +1,34 @@
 #include "Classes/FlightInfo.h"
 /* Static variables */
-long long FlightInfo::lastFlightId = 0;
+long long FlightInfo::kLastFlightId_ = 0;
 
 
 /* Methods */
 FlightInfo::FlightInfo(){
-	
+	this->id_ = ++FlightInfo::kLastFlightId_;
 }
-FlightInfo::FlightInfo(string Route, string DepartureTime, string ArrivalTime, double Price){
-	// This constructor shall be used only when reading from files
-	this-> id				= ++lastFlightId;
-	this-> route			= Route;
-	this-> departureTime	= DepartureTime;
-	this-> arrivalTime		= ArrivalTime;
-	this-> price			= Price;
+FlightInfo::FlightInfo(const string& route,const string& departure_time, const string& arrival_time, const double& price){
+	this-> id_				= ++kLastFlightId_;
+	this-> route_			= route;
+	this-> departure_time_	= departure_time;
+	this-> arrival_time_	= arrival_time;
+	this-> price_			= price;
 }
 
 
 /* Operators overloading */
-ostream& operator<<(ostream& Stream, const FlightInfo& Flight){
-	Date	departure = Flight.departureTime,
-			arrival = Flight.arrivalTime;
- 	Stream 	<< "Flight id:" 	<< tabs << Flight.id 	<< '\n'
-			<< "Flight route:"	<< tabs << Flight.route	<< '\n'
-			<< "Departure at:"	<< tabs << departure 	<< '\n'
-			<< "Arrives at:"	<< tabs << arrival 		<< '\n'
-			<< "Price:"	<< tabs << Flight.price << '\n';
-	return Stream;
+ostream& operator<<(ostream& output_stream, const FlightInfo& flight){
+ 	output_stream << "Flight id:" 	<< TABS << flight.id_ 			<< '\n'
+		<< "Flight route:"	<< TABS << flight.route_				<< '\n'
+		<< "Departure at:"	<< TABS << (Date&)flight.departure_time_<< '\n'
+		<< "Arrives at:"	<< TABS << (Date&)flight.arrival_time_ 	<< '\n'
+		<< "Price:	"		<< TABS << flight.price_ << '\n';
+	return output_stream;
 }
-istream& operator>>(istream& Stream, FlightInfo& Flight){
-	Flight.id = ++FlightInfo::lastFlightId;
-	cout << "Flight route:"		<< tabs; Stream >> Flight.route;
-	cout << "Departure at:"		<< tabs; Stream >> Flight.departureTime;
-	cout << "Arrives at:"		<< tabs; Stream >> Flight.arrivalTime;
-	cout << "Price:"			<< tabs; Stream >> Flight.price;
-	return Stream;
+istream& operator>>(istream& input_stream, FlightInfo& flight){
+	cout << "Flight route:"		<< TABS; input_stream >> flight.route_;
+	cout << "Departure at:"		<< TABS; input_stream >> flight.departure_time_;
+	cout << "Arrives at:"		<< TABS; input_stream >> flight.arrival_time_;
+	cout << "Price:	"			<< TABS; input_stream >> flight.price_;
+	return input_stream;
 }
