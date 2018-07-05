@@ -3,7 +3,7 @@
 bool running = true;
 
 void make_choice(){
-    cout<<" KOR ";
+
 }
 
 void update_records(){
