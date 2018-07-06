@@ -9,12 +9,10 @@ class Date{
 		void read();
 		void display() const;
 		
-		string set_date(int day, int month, int year, int hour, int minute);
+		void set_date(int day, int month, int year, int hour, int minute);
 		string get_as_string(); // not const because it actually update the date_string_
-		void update_string(); // not const because it has to change the member variables
 	private:
-		string date_string_;
-		struct tm date_;
+		int Day_,Month_,Year_,Hour_,Minute_;
 };
 
 #endif

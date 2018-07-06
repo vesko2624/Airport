@@ -13,7 +13,6 @@ Recorder::~Recorder(){
 }
 
 void Recorder::Record_Flight(FlightInfo& temp){
-	// Prosto Dobavih metodite koito napravih za Get-vane na Route i Date
 	Flight_Output_File <<temp.id_ << "  " << temp.route_.get_departure() << " " << temp.route_.get_arrival() << " " << temp.departure_time_.get_as_string() << " " << temp.arrival_time_.get_as_string() << " " << temp.price_ << endl;
 }
 FlightInfo Recorder::Read_Flight(){
