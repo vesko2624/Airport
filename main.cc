@@ -25,13 +25,8 @@ void make_choice(){
 void Make_flight_record(){
 	FlightInfo *temp = new FlightInfo;
 	cin >> *temp;
-
-	ofstream output;
-	output.open("Flight_records.txt",ios::app);	
-
-	output << *temp << endl;	
-
-	output.close();
+	Recorder a;
+	a.Record_Flight(*temp);
 	delete temp;
 }
 

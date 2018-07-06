@@ -13,6 +13,8 @@ class FlightInfo{
 		Route route_;
 		Date departure_time_, arrival_time_;
 		double price_;
+		
+		friend class Recorder;
 };
 
 #endif
