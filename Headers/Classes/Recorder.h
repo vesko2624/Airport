@@ -9,7 +9,7 @@ class Recorder{
 	public:
 		void Record_Flight(const FlightInfo&);
 		void Record_User();
-		void Read_Flight(FlightInfo&);
+		FlightInfo Read_Flight();
 		void Read_User();
 		Recorder();
 		~Recorder();

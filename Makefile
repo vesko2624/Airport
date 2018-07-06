@@ -1,2 +1,2 @@
 build:
-	g++ main.cc -o main
+	g++ main.cpp -o main

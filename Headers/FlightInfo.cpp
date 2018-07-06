@@ -16,19 +16,23 @@ FlightInfo::FlightInfo(const string& route,const string& departure_time, const s
 }
 
 
-/* Operators overloading */
-ostream& operator<<(ostream& output_stream, const FlightInfo& flight){
- 	output_stream << "Flight id:" 	<< TABS << flight.id_ 			<< '\n'
-		<< "Flight route:"	<< TABS << flight.route_				<< '\n'
-		<< "Departure at:"	<< TABS << (Date&)flight.departure_time_<< '\n'
-		<< "Arrives at:"	<< TABS << (Date&)flight.arrival_time_ 	<< '\n'
-		<< "Price:	"		<< TABS << flight.price_ << '\n';
-	return output_stream;
+void FlightInfo::Read(){
+	cout << "Flight route:"<< TABS ;
+	flight.route_.read();
+	cout << "Departure at:"<< TABS ;
+	departure_time_.read();
+	cout << "Arrives at:"	<< TABS;
+	arrival_time_.read();
+	cout<< "Price:	"<< TABS;
+	cin >> price_;
 }
-istream& operator>>(istream& input_stream, FlightInfo& flight){
-	cout << "Flight route:"		<< TABS; input_stream >> flight.route_;
-	cout << "Departure at:"		<< TABS; input_stream >> flight.departure_time_;
-	cout << "Arrives at:"		<< TABS; input_stream >> flight.arrival_time_;
-	cout << "Price:	"			<< TABS; input_stream >> flight.price_;
-	return input_stream;
+void FlightInfo::Display(){
+	cout << "Flight id:" << TABS << id_<<endl;  
+	cout << "Flight route:"<< TABS;
+	route_.display();
+	cout << "Departure at:"<< TABS;
+	departure_time_.display();
+	cout << "Arrives at:" << TABS;
+	 arrival_time_.display;
+	cout << "Price:	"<< TABS << flight.price_;
 }

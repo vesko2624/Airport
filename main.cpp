@@ -26,8 +26,8 @@ void make_choice(){
 void Make_flight_record(){
 	FlightInfo *temp = new FlightInfo;
 	cin >> *temp;
-	cout << *temp;
 	Rec.Record_Flight(*temp);
+	//Rec.Read_Flight();
 	delete temp;
 }
 
