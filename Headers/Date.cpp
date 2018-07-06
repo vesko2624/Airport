@@ -1,34 +1,54 @@
 #include "Classes/Date.h"
-/* Static variables & Methods */
-char Date::kDateDelim_ = '.',
-  Date::kTimeDelim_ = ':';
-void Date::SetFormat(const char& date_delim, const char& time_delim){
-	Date::kDateDelim_ = date_delim;
-	Date::kTimeDelim_ = time_delim;
+
+
+// Constructors
+Date::Date(){
+	this-> date_ = {0};
+}
+Date::Date(int day, int month, int year, int hour, int minute){
+	set_date(day, month, year, hour, minute);
 }
 
 
-/* Operators overloading */
-basic_istream<char>& operator>>(basic_istream<char>& input_stream, Date& input_date){
-	unsigned short	*date[3] = {&input_date.day_, &input_date.month_, &input_date.year_},
-					*time[2] = {&input_date.hour_, &input_date.minute_};
-	for(int i = 0; i < 3; ++i) input_stream >> (*date)[i], input_stream.ignore(1, Date::kDateDelim_);
-	for(int i = 0; i < 2; ++i) input_stream >> (*time)[i], input_stream.ignore(!i, Date::kTimeDelim_);
-	return input_stream;
+// Methods
+void Date::display() const{
+	cout << date_string_;
+}
+void Date::read(){
+	int day, month, year, hour, minute;
+	cout << '\n';
+	cout << "	Enter day: ";
+	cin >> day;
+	cout << "	Enter month: ";
+	cin >> month;
+	cout << "	Enter year: ";
+	cin >> year;
+	cout << "	Enter hour: ";
+	cin >> hour;
+	cout << "	Enter minute: ";
+	cin >> minute;
+	set_date(day, month, year, hour, minute);
 }
 
-basic_ostream<char>& operator<<(basic_ostream<char>& output_stream, Date& input_date){
-	unsigned short	*date[3] = {&input_date.day_, &input_date.month_, &input_date.year_},
-					*time[2] = {&input_date.hour_, &input_date.minute_};
-	for(int i = 0; i < 3; ++i) output_stream << (*date)[i] << ((i<2)? Date::kDateDelim_ : ' '); // output day/month/year hour:minute ternary operator is used to
-	for(int i = 0; i < 2; ++i) output_stream << (*time)[i] << ((!i)? Date::kTimeDelim_ : '\0'); // prevent placing delim at the end of the output
-	return output_stream;
-}
 
-void Date::operator=(const string& input_date){
-	unsigned short	*date[3] = {&this-> day_, &this-> month_, &this-> year_},
-					*time[2] = {&this-> hour_, &this-> minute_};
-	stringstream string_stream(input_date);
-	for(int i = 0; i < 3; ++i) string_stream >> (*date)[i], string_stream.ignore(1, Date::kDateDelim_);
-	for(int i = 0; i < 2; ++i) string_stream >> (*time)[i], string_stream.ignore(!i, Date::kTimeDelim_);
+// Getters and/or Setters
+string Date::set_date(int day, int month, int year, int hour, int minute){
+	date_.tm_mday = day; // Range 1-31
+	date_.tm_mon = month - 1; // month is between 0 and 11 !!!!
+	date_.tm_year = year - 1900; // tm_year means years since 1900
+	date_.tm_hour = hour; // Range 0-23
+	date_.tm_min = minute; // Range 0-59
+}
+string Date::get_as_string(){
+	update_string();
+	return date_string_;
+}
+void Date::update_string(){
+	string day_as_string = get<string>(date_.tm_mday);
+	string month_as_string = get<string>(date_.tm_mon + 1); // + 1 to change the range from 0 and 11 to 1 and 12
+	string year_as_string = get<string>(date_.tm_year + 1900);
+	string hour_as_string = get<string>(date_.tm_hour);
+	string minute_as_string = get<string>(date_.tm_min);
+	
+	date_string_ = day_as_string + " " + month_as_string + " " + year_as_string + " " + hour_as_string + " " + minute_as_string;
 }

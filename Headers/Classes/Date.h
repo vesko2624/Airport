@@ -1,15 +1,20 @@
 #ifndef _Date_
 #define _Date_
+
 class Date{
 	public:
-		static void SetFormat(const char& date_delim, const char& time_delim = ':');
-		void operator=(const string& input_date);
+		Date();
+		Date(int day, int month, int year, int hour, int minute);
 		
-		friend basic_istream<char>& operator>>(basic_istream<char>& input_stream, Date& input_date);
-		friend basic_ostream<char>& operator<<(basic_ostream<char>& output_stream, Date& input_date);
+		void read();
+		void display() const;
+		
+		string set_date(int day, int month, int year, int hour, int minute);
+		string get_as_string(); // not const because it actually update the date_string_
+		void update_string(); // not const because it has to change the member variables
 	private:
-		static char kDateDelim_, kTimeDelim_;
-		unsigned short day_, month_, year_, hour_, minute_;
+		string date_string_;
+		struct tm date_;
 };
 
 #endif

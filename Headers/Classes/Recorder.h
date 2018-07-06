@@ -7,7 +7,7 @@ class Recorder{
 		ifstream Input_File_Flights;
 		ifstream Input_File_Users;
 	public:
-		void Record_Flight(const FlightInfo&);
+		void Record_Flight(FlightInfo&);
 		void Record_User();
 		FlightInfo Read_Flight();
 		void Read_User();

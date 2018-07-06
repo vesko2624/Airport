@@ -1,32 +1,39 @@
 #include "Classes/Route.h"
 
 
-/* Operators overloading */
-void Route::operator=(string full_route){
-	for(int i = 0; i < full_route.length(); ++i)
-		if( !((full_route[i] >= 'a' && full_route[i] <= 'z') || 
-			(full_route[i] >= 'A' && full_route[i] <= 'Z') || 
-			full_route[i] == ' ') ){ // Remove all unnecessary symbols
-			
-			full_route.erase(i, 1);
-			i--;
-			
-		}
-	stringstream string_stream(full_route);
-	string_stream >> this-> departure >> this-> arrival;
+// Read() and Display() for both departure and arrival
+void Route::read_departure(){
+	cin >> this-> departure_;
+}
+void Route::read_arrival(){
+	cin >> this-> arrival_;
 }
 
-basic_ostream<char>& operator<<(basic_ostream<char>& output_stream, const Route& flight){
-	string full_route = flight.departure + " - " + flight.arrival;
-	return output_stream << full_route;
+void Route::display_departure() const{
+	cout << this-> departure_ << '\n';
+}
+void Route::display_arrival() const{
+	cout << this-> arrival_ << '\n';
 }
 
 
-basic_istream<char>& operator>>(basic_istream<char>& input_stream, Route& flight_route){
-	// cin getline the Route in a string and calls operator=
-	string route_as_string;
-	getline(input_stream, route_as_string);
-	flight_route = route_as_string;
-	return input_stream;
+// Getters and setters
+void Route::set_departure(const string& departure){
+	this-> departure_ = departure;
+}
+void Route::set_arrival(const string& arrival){
+	this-> arrival_ = arrival;
+}
+
+string Route::get_departure() const{
+	return this-> departure_;
+}
+string Route::get_arrival() const{
+	return this-> arrival_;
+}
+
+string Route::get_as_string() const{
+	string route = this-> departure_ + " " + this-> arrival_;
+	return route;
 }
 
