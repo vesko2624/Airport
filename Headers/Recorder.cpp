@@ -13,5 +13,5 @@ Recorder::~Recorder(){
 }
 
 void Recorder::Record_Flight(const FlightInfo& temp){
-	Flight_Output_File << temp.id_ << "  " <<temp.route_ << "  " << temp.departure_time_ << "  " << temp.arrival_time_ << "  " <<temp.price_ << endl;
+	Flight_Output_File << temp.id_ << "  " << temp.route_ << " ";
 }

@@ -9,7 +9,7 @@ void Date::SetFormat(const char& date_delim, const char& time_delim){
 
 
 /* Operators overloading */
-istream& operator>>(istream& input_stream, Date& input_date){
+basic_istream<char>& operator>>(basic_istream<char>& input_stream, Date& input_date){
 	unsigned short	*date[3] = {&input_date.day_, &input_date.month_, &input_date.year_},
 					*time[2] = {&input_date.hour_, &input_date.minute_};
 	for(int i = 0; i < 3; ++i) input_stream >> (*date)[i], input_stream.ignore(1, Date::kDateDelim_);
@@ -17,7 +17,7 @@ istream& operator>>(istream& input_stream, Date& input_date){
 	return input_stream;
 }
 
-ostream& operator<<(ostream& output_stream, Date& input_date){
+basic_ostream<char>& operator<<(basic_ostream<char>& output_stream, Date& input_date){
 	unsigned short	*date[3] = {&input_date.day_, &input_date.month_, &input_date.year_},
 					*time[2] = {&input_date.hour_, &input_date.minute_};
 	for(int i = 0; i < 3; ++i) output_stream << (*date)[i] << ((i<2)? Date::kDateDelim_ : ' '); // output day/month/year hour:minute ternary operator is used to

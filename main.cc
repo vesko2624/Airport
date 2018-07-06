@@ -1,5 +1,5 @@
 #include "Airport.cpp"
-
+//stanislav.dimov@quanterall.com
 bool running = true;
 Recorder Rec;
 
@@ -26,7 +26,7 @@ void make_choice(){
 void Make_flight_record(){
 	FlightInfo *temp = new FlightInfo;
 	cin >> *temp;
-
+	cout << *temp;
 	Rec.Record_Flight(*temp);
 	delete temp;
 }

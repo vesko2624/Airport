@@ -5,8 +5,8 @@ class Route{
 	public:
 		void operator=(string);
 		
-		friend ostream& operator<<(ostream&, const Route&);
-		friend istream& operator>>(istream&, Route&);
+		friend basic_ostream<char>& operator<<(basic_ostream<char>&, const Route&);
+		friend basic_istream<char>& operator>>(basic_istream<char>&, Route&);
 	private:
 		string departure, arrival;
 };
