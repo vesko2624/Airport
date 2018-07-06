@@ -18,4 +18,5 @@ void Clear_cin(){
 #include "Headers/Date.cpp"
 #include "Headers/Route.cpp"
 #include "Headers/FlightInfo.cpp"
+#include "Headers/Recorder.cpp"
 
