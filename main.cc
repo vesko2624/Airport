@@ -2,18 +2,36 @@
 
 bool running = true;
 
+void Make_flight_record();
+
 void make_choice(){
+	int choice = 0 ;
+	cout << " 1. New flight  record.  \n" ;
 
+	if( !( cin >> choice )  || choice < 1 || choice > 1){
+		cout<<" Bad input! \n "; 
+		Clear_cin();
+		return ;
+	}
+
+	Clear_cin();
+	
+	switch (choice){
+		case 1 :  Make_flight_record();
+		
+	}
 }
 
-void update_records(){
-    
+void Make_flight_record(){
+	FlightInfo *temp = new FlightInfo;
+	cin >> *temp;
+	delete temp;
 }
+
 
 int main(){
     while(running){
         make_choice();
-        update_records();
     }
     return 0;
 }

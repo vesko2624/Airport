@@ -2,7 +2,15 @@
 #include <sstream>
 #include <string>
 #include <fstream>
+#include<limits>
 using namespace std;
+
+void Clear_cin(){
+	cin.clear();
+	cin.ignore(numeric_limits<streamsize>::max(), '\n' );	
+	cin.sync();
+}
+
 /* Including all cpp files below */
 
 
