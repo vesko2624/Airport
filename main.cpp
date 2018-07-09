@@ -19,8 +19,8 @@ void make_choice(){
 
 void Make_flight_record(){
 	FlightInfo *temp = new FlightInfo;
-	temp->Read();
-	Rec.Record_Flight(*temp);
+	if(temp->Read())
+		Rec.Record_Flight(*temp);
 	delete temp;
 }
 

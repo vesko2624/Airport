@@ -23,20 +23,21 @@ void Date::display() const{
 	cout << Day_ << ". " << Month_ << ". " << Year_ << " year - " 
 		<< Hour_ << " : " << Minute_ << endl;
 }
-void Date::read(){
+bool Date::read(){
 	int day, month, year, hour, minute;
 	cout << '\n';
 	cout << "\tEnter day: ";
-	validate_cin(day, 1, 31);
+	if(!validate_cin(day, 1, 31)) return false;
 	cout << "\tEnter month: ";
-	validate_cin(month, 1, 12);
+	if(!validate_cin(month, 1, 12)) return false;
 	cout << "\tEnter year: ";
-	validate_cin(year, 1900, 2100);
+	if(!validate_cin(year, 1900, 2100)) return false;
 	cout << "\tEnter hour: ";
-	validate_cin(hour, 0, 23);
+	if(!validate_cin(hour, 0, 23)) return false;
 	cout << "\tEnter minute: ";
-	validate_cin(minute, 0, 59);
+	if(!validate_cin(minute, 0, 59)) return false;
 	set_date(day, month, year, hour, minute);
+	return true;
 }
 
 

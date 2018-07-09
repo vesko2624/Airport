@@ -6,7 +6,7 @@ class Date{
 		Date();
 		Date(int day, int month, int year, int hour, int minute);
 		
-		void read();
+		bool read();
 		void display() const;
 		
 		void set_date(int day, int month, int year, int hour, int minute);

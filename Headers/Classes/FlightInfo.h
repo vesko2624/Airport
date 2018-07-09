@@ -6,7 +6,7 @@ class FlightInfo{
 		FlightInfo();
 		FlightInfo(const string& departure, const string& arrival,const string& departure_time, const string& arrival_time, const double& price);
 		
-		void Read();
+		bool Read();
 		void Display();
 	private:
 		static long long kLastFlightId_;
