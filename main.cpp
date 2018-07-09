@@ -9,14 +9,8 @@ void test();
 void make_choice(){
 	int choice = 0 ;
 	cout << "1. New flight  record.  \n" ;
-
-	if( !( cin >> choice )  || choice < 1 || choice > 2){
-		cout<<" Bad input! \n "; 
-		Clear_cin();
-		return ;
-	}
-
-	Clear_cin();
+	cin >> choice;
+	if(!validate_cin(choice, 1, 2)) return;
 	
 	switch (choice){
 		case 1 :  Make_flight_record(); break;
