@@ -11,6 +11,7 @@ class Route{
 		
 		void set_departure(const string& departure);
 		void set_arrival(const string& arrival);
+		void set_route(const string& departure,const string& arrival);
 		
 		string get_departure() const;
 		string get_arrival() const;

@@ -17,10 +17,14 @@ void Recorder::Record_Flight(FlightInfo& temp){
 }
 FlightInfo Recorder::Read_Flight(){
 	FlightInfo temp;
-	// Marto ili Jivko -> Vie si izberete kak da chete Route i Date tui kato parametrite im sa private
-	// trqbva da budat setnati sys tehnite methodi
-	
-	//Input_File_Flights >> temp.id_ >> temp.price_;
-	//cout<< temp.id_ << "  " << temp.route_.get_departure() << " " << temp.route_.get_arrival() << "  "<<temp.price_;
+	int id,day_d,month_d,year_d,hour_d,minute_d,day_a,month_a,year_a,hour_a,minute_a;
+	double price;
+	string departure,arrival;
+	Input_File_Flights >> id >> departure >> arrival >> day_d >> month_d >> year_d >> hour_d >> minute_d >> day_a >> month_a >> year_a >> hour_a >> minute_a >> price;
+	temp.id_ = id;
+	temp.price_ = price;
+	temp.route_.set_route(departure,arrival);
+	temp.departure_time_.set_date(day_d,month_d,year_d,hour_d,minute_d);
+	temp.arrival_time_.set_date(day_a,month_a,year_a,hour_a,minute_a);
 	return temp;
 }

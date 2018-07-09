@@ -10,7 +10,7 @@ class FlightInfo{
 		void Display();
 	private:
 		static long long kLastFlightId_;
-		long long id_;
+		int id_;
 		Route route_;
 		Date departure_time_, arrival_time_;
 		double price_;
