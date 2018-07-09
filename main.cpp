@@ -4,7 +4,7 @@ bool running = true;
 Recorder Rec;
 
 void Make_flight_record();
-void test();
+void read();
 
 void make_choice(){
 	int choice = 0 ;
@@ -13,7 +13,7 @@ void make_choice(){
 	
 	switch (choice){
 		case 1 :  Make_flight_record(); break;
-		case 2:   test(); break;
+		case 2:   read(); break;
 	}
 }
 
@@ -24,9 +24,9 @@ void Make_flight_record(){
 	delete temp;
 }
 
-void test(){
+void read(){
 	FlightInfo temp;
-	temp = Rec.Read_Flight();
+	if(Rec.Read_Flight(temp));
 	temp.Display();
 }
 

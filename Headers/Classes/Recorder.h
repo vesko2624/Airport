@@ -9,7 +9,7 @@ class Recorder{
 	public:
 		void Record_Flight(FlightInfo&);
 		void Record_User();
-		FlightInfo Read_Flight();
+		bool Read_Flight(FlightInfo&);
 		void Read_User();
 		Recorder();
 		~Recorder();
