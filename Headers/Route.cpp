@@ -3,10 +3,10 @@
 
 // Read() and Display() for both departure and arrival
 void Route::read_departure(){
-	cin >> this-> departure_;
+	validate_cin( departure_);
 }
 void Route::read_arrival(){
-	cin >> this-> arrival_;
+	validate_cin(arrival_);
 }
 
 void Route::display_departure() const{

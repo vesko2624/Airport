@@ -39,7 +39,7 @@ void FlightInfo::Read(){
 	arrival_time_.read();
 	
 	cout<< "Price:	"<< TABS;
-	cin >> price_;
+	validate_cin(price_,0.0);
 }
 
 void FlightInfo::Display(){
