@@ -26,16 +26,16 @@ void Date::display() const{
 void Date::read(){
 	int day, month, year, hour, minute;
 	cout << '\n';
-	cout << "	Enter day: ";
-	cin >> day;
-	cout << "	Enter month: ";
-	cin >> month;
-	cout << "	Enter year: ";
-	cin >> year;
-	cout << "	Enter hour: ";
-	cin >> hour;
-	cout << "	Enter minute: ";
-	cin >> minute;
+	cout << "\tEnter day: ";
+	validate_cin(day, 1, 31);
+	cout << "\tEnter month: ";
+	validate_cin(month, 1, 12);
+	cout << "\tEnter year: ";
+	validate_cin(year, 1900, 2100);
+	cout << "\tEnter hour: ";
+	validate_cin(hour, 0, 23);
+	cout << "\tEnter minute: ";
+	validate_cin(minute, 0, 59);
 	set_date(day, month, year, hour, minute);
 }
 
