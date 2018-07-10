@@ -41,4 +41,5 @@ bool validate_cin(T& choice, T min = -3211233, T max = -3211233){
 #include "Headers/FlightInfo.cpp"
 #include "Headers/FlightData.cpp"
 #include "Headers/Recorder.cpp"
+#include "Headers/Menu_func.cpp"
 

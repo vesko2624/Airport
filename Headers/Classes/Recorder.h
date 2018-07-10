@@ -11,6 +11,8 @@ class Recorder{
 		void Record_User();
 		bool Read_Flight(FlightInfo&);
 		void Read_User();
+		void Reload_Flight_Records_file();
+		void Reload_User_Recors_file();
 		Recorder();
 		~Recorder();
 };
