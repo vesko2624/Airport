@@ -19,7 +19,7 @@ void make_choice(){
 
 void Make_flight_record(){
 	FlightInfo *temp = new FlightInfo;
-	if(temp->Read())
+	if(temp->read())
 		Rec.Record_Flight(*temp);
 	delete temp;
 }
@@ -27,7 +27,7 @@ void Make_flight_record(){
 void read(){
 	FlightInfo temp;
 	if(Rec.Read_Flight(temp));
-	temp.Display();
+	temp.display();
 }
 
 int main(){

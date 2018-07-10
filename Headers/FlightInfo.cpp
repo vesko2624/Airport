@@ -9,7 +9,7 @@ FlightInfo::FlightInfo(): id_(++FlightInfo::kLastFlightId_){
 
 
 // Methods
-bool FlightInfo::Read(){
+bool FlightInfo::read(){
 	bool valid = true;
 	cout << "Flying from:"<< TABS ;
 	route_.read_departure();
@@ -29,7 +29,7 @@ bool FlightInfo::Read(){
 	return valid;
 }
 
-void FlightInfo::Display(){
+void FlightInfo::display(){
 	cout << "Flight id:" << TABS << id_ << '\n';  
 	
 	cout << "Flying from:"<< TABS ;
@@ -44,5 +44,5 @@ void FlightInfo::Display(){
 	cout << "Arrival time:";
 	arrival_time_.display();
 	
-	cout << "Price:	"<< TABS << price_;
+	cout << "Price:	"<< TABS << price_ << '\n';
 }

@@ -6,8 +6,8 @@ class FlightInfo{
 		FlightInfo();
 		FlightInfo(const string& departure, const string& arrival,const string& departure_time, const string& arrival_time, const double& price);
 		
-		bool Read();
-		void Display();
+		bool read();
+		void display();
 	private:
 		static long long kLastFlightId_;
 		int id_;
@@ -16,6 +16,7 @@ class FlightInfo{
 		double price_;
 		
 		friend class Recorder;
+		friend class FlightData;
 };
 
 #endif
