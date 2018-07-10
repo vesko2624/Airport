@@ -28,3 +28,8 @@ bool Recorder::Read_Flight(FlightInfo& temp){
 	temp.arrival_time_.set_date(day_a,month_a,year_a,hour_a,minute_a);
 	return true;
 }
+
+void Recorder::Reload_Flight_Records_file(){
+	Input_File_Flights.close();
+	Input_File_Flights.open("Flight_Records.txt");
+}
