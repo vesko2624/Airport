@@ -12,10 +12,11 @@ using std::cout;
 class FlightInfo{
 	public:
 		FlightInfo();
-		FlightInfo(const string& departure, const string& arrival,const string& departure_time, const string& arrival_time, const double& price);
+//		FlightInfo(const string& departure, const string& arrival,const string& departure_time, const string& arrival_time, const double& price);
 		
 		bool read();
 		void display();
+		Route get_route();
 	private:
 		static long long kLastFlightId_;
 		int id_;

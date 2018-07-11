@@ -1,5 +1,7 @@
 #include <iostream>
 #include <string>
+#include "../Airport.h"
+#include "FlightData.h"
 using std::string;
 using std::cout;
 using std::cin;
@@ -10,15 +12,17 @@ using std::cin;
 class PathFinder{
 	public:
 		bool FindRoutes(Route,FlightData);
-		void Add_Jump(Route);
-		void Remove_jump();
+		void Add_Jump(Route){
+		}
+		void Remove_jump(){
+		}
 		PathFinder();
 		~PathFinder();		
 
 		void Display_Route();
 	private:
 		bool Active;
-		Route *curren_route;
+		Route *current_route;
 		int Jumps;
 		double Price;
 };

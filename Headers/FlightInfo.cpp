@@ -27,7 +27,7 @@ bool FlightInfo::read(){
 	
 	cout<< "Price:	"<< TABS;
 	if(!validate_cin(price_,0.0)) valid = false;
-	if(!valid) cout << "You've entered invalid information, it cannot be saved\n";
+	if(!valid) cout << "You've entered invalid information, it cannot be saved\n"; // ADD ERROR CODES;
 	return valid;
 }
 
@@ -40,11 +40,14 @@ void FlightInfo::display(){
 	cout << "Flying to:"<< TABS ;
 	route_.display_arrival();
 	
-	cout << "Departure time:";
+	cout << "Departure time:" << TABS;
 	departure_time_.display();
 	
-	cout << "Arrival time:";
+	cout << "Arrival time:" << TABS;
 	arrival_time_.display();
 	
 	cout << "Price:	"<< TABS << price_ << '\n';
+}
+Route FlightInfo::get_route(){
+	return route_;
 }

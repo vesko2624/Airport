@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "Counter.h"
 #include "FlightInfo.h"
 using std::vector;
 using std::cout;
@@ -10,7 +11,8 @@ using std::cin;
 
 class FlightData{
 	public:
-		FlightData();
+		FlightData(Counter& counter);
+		Counter& get_counter();
 		void display();
 
 		void add_flight();
@@ -22,6 +24,7 @@ class FlightData{
 		int getsize();
 	private:
 		vector<FlightInfo> flights_;
+		Counter counter_;
 };
 
 #endif

@@ -25,7 +25,7 @@ T get(S variable){         // For example get<string>(5) returns "5";
 
 template<class T>
 bool validate_cin(T& choice, T min = -3211233, T max = -3211233){
-	bool to_return = true, has_min = min != -3211233, has_max = min && max != -3211233;
+	bool to_return = true, has_min = min != -3211233, has_max = has_min && max != -3211233;
 	if(!(cin >> choice)) to_return = false;
 	if(has_min)
 		if(choice < min) to_return = false;

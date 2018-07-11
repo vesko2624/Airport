@@ -6,7 +6,8 @@ bool running = true;
 Recorder Rec;
 
 int main(){
-	FlightData flights;
+	Counter counter;
+	FlightData flights(counter);
     while(running){
         make_choice(flights);
     }

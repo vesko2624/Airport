@@ -1,13 +1,16 @@
 #include "../Airport.h"
 #include "../Classes/FlightData.h"
 // Constructors
-FlightData::FlightData(){
-	
+FlightData::FlightData(Counter& counter){
+	this-> counter_ = counter;
 }
 
 // Methods
+Counter& FlightData::get_counter(){
+	return counter_;
+}
 void FlightData::display(){
-	if(!flights_.size()) cout << "There is nothing to display.\n";
+//	if(!flights_.size()) cout << "There is nothing to display.\n"; // Add error codes
 	cout << '\n';
 	for(int i = 0; i < flights_.size(); ++i){
 		flights_[i].display();
@@ -68,7 +71,10 @@ void FlightData::add_flight(FlightInfo flight, bool auto_adjust_id){
 					break;
 			}
 		}while(loop);
-	}else flights_.push_back(flight);
+	}else{
+		flights_.push_back(flight);
+		counter_.add_flight(flight);
+	}
 }
 bool FlightData::get_flight_by_id(FlightInfo* flight, const int& id){
 	for(int i = 0; i < flights_.size(); ++i)

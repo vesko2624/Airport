@@ -1,4 +1,3 @@
-#include "../Airport.h"
 #include "../Classes/PathFinder.h"
 PathFinder::PathFinder(){
 	Active = false;
