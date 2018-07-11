@@ -1,5 +1,5 @@
-#include "Classes/Date.h"
-
+#include "../Airport.h"
+#include "../Classes/Date.h"
 
 // Constructors
 Date::Date(){
@@ -21,7 +21,7 @@ Date::Date(int day, int month, int year, int hour, int minute){
 // Methods
 void Date::display() const{
 	cout << Day_ << ". " << Month_ << ". " << Year_ << " year - " 
-		<< Hour_ << " : " << Minute_ << endl;
+		<< Hour_ << " : " << Minute_ << '\n';
 }
 bool Date::read(){
 	int day, month, year, hour, minute;

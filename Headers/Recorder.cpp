@@ -1,9 +1,11 @@
-#include "Classes/Recorder.h"
+#include "../Classes/Recorder.h"
+using namespace std;
+
 Recorder::Recorder(){
-	Flight_Output_File.open("Flight_Records.txt",ios::app);
-	User_Output_File.open("User_Records.txt",ios::app);
-	Input_File_Flights.open("Flight_Records.txt");
-	Input_File_Users.open("User_Records.txt");
+	Flight_Output_File.open("DataBase/Flight_Records.txt",ios::app);
+	User_Output_File.open("DataBase/User_Records.txt",ios::app);
+	Input_File_Flights.open("DataBase/Flight_Records.txt");
+	Input_File_Users.open("DataBase/User_Records.txt");
 }
 Recorder::~Recorder(){
 	Flight_Output_File.close();

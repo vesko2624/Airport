@@ -1,3 +1,7 @@
+#include <iostream>
+using std::cout;
+using std::cin;
+using std::string;
 #ifndef _Date_
 #define _Date_
 

@@ -1,4 +1,5 @@
-#include "Classes/FlightData.h"
+#include "../Airport.h"
+#include "../Classes/FlightData.h"
 // Constructors
 FlightData::FlightData(){
 	
@@ -69,11 +70,13 @@ void FlightData::add_flight(FlightInfo flight, bool auto_adjust_id){
 		}while(loop);
 	}else flights_.push_back(flight);
 }
-FlightInfo FlightData::get_flight_by_id(const int& id){
+bool FlightData::get_flight_by_id(FlightInfo* flight, const int& id){
 	for(int i = 0; i < flights_.size(); ++i)
-		if(flights_[i].id_ == id) return flights_[i];
-	cout << "\nFLIGHT NOT FOUND. GOT EMPTY FLIGHT INSTEAD \n";
-	return FlightInfo();
+		if(flights_[i].id_ == id){
+			flight = &flights_[i];
+			return true;
+		}
+	return false;
 }
 vector<FlightInfo> FlightData::get_flights_by_departure_city(string city){
 	vector<FlightInfo> flights_from_city;

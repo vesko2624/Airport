@@ -1,4 +1,6 @@
-#include "Classes/FlightInfo.h"
+#include "../Airport.h"
+#include "../Classes/FlightInfo.h"
+
 /* Static variables */
 long long FlightInfo::kLastFlightId_ = 0;
 

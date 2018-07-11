@@ -1,3 +1,8 @@
+#include <fstream>
+#include "FlightInfo.h"
+using std::ofstream;
+using std::ifstream;
+
 #ifndef _Recorder_
 #define _Recorder_
 class Recorder{

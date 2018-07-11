@@ -1,3 +1,11 @@
+#include <iostream>
+#include <string>
+#include "Route.h"
+#include "Date.h"
+using std::string;
+using std::cin;
+using std::cout;
+
 #ifndef _FlightInfo_
 #define _FlightInfo_
 

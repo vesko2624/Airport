@@ -1,11 +1,18 @@
 #include <iostream>
-#include <vector>
 #include <sstream>
-#include <string>
-#include <fstream>
 #include <limits>
-#include <ctime>
-using namespace std;
+using std::cout;
+using std::cin;
+using std::stringstream;
+using std::numeric_limits;
+using std::streamsize;
+#define TABS "		"
+
+#ifndef AIRPORT_H
+#define AIRPORT_H
+
+void Clear_cin();
+
 template<class T, class S> // Convert variable of type T to variable of type S
 T get(S variable){         // For example get<string>(5) returns "5";
 	T temp;
@@ -14,11 +21,8 @@ T get(S variable){         // For example get<string>(5) returns "5";
 	stream >> temp;
 	return temp;
 }
-void Clear_cin(){
-	cin.clear();
-	cin.ignore(numeric_limits<streamsize>::max(), '\n' );	
-	cin.sync();
-}
+
+
 template<class T>
 bool validate_cin(T& choice, T min = -3211233, T max = -3211233){
 	bool to_return = true, has_min = min != -3211233, has_max = min && max != -3211233;
@@ -32,14 +36,4 @@ bool validate_cin(T& choice, T min = -3211233, T max = -3211233){
 	return to_return;
 }
 
-/* Including all cpp files below */
-
-
-#define TABS "		"
-#include "Headers/Date.cpp"
-#include "Headers/Route.cpp"
-#include "Headers/FlightInfo.cpp"
-#include "Headers/FlightData.cpp"
-#include "Headers/Recorder.cpp"
-#include "Headers/Menu_func.cpp"
-
+#endif
