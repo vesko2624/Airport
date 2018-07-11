@@ -1,53 +1,46 @@
 #include "../Airport.h"
 
-#include "../Classes/UserInfo.h"
-
-#include "../Classes/FlightData.h"
 #include "../Classes/Menu_func.h"
-#include "../Classes/Recorder.h"
 using std::cout; using std::cin;
 
 
-void make_choice(FlightData& flights){
+void make_choice(FlightData& flights, UserData& users){
 	int choice = 0 ;
 	cout << " 1. New flight record.      RABOTI\n" ;
-	cout << " 2. New user request.       RABOTI do nqkude\n";
+	cout << " 2. New user request.       RABOTI\n";
 	cout << " 3. Change flight by id     RABOTI\n";
 	cout << " 4. Get all flights         RABOTI\n";
-	cout << " 5. All user requests \n";
-	cout << " 6. Find flight by request \n";
+	cout << " 5. All user requests       RABOTI\n";
+	cout << " 6. Find flight by request  NEED ALGORITHM\n";
 	cout << " 7. Find flights from a city after a certain hour \n";
 	cout << " 8. Find city with most flights   RABOTI \n";
-	cout << " 9. Find city with most users \n";
-	cout << " 10. Record in file \n";
-	if(!validate_cin(choice,1,10)) return;
+	cout << " 9. Find city with most users     RABOTI\n";
+	cout << " 10. Record in file               RABOTI\n";
+	cout << " 11. Exit \n";
+	if(!validate_cin(choice,1,11)) return;
 	
 	switch (choice){
 		case 1 :  Make_flight_record(flights); break;
-		case 2:   Make_user_record(); break;
+		case 2:   Make_user_record(users); break;
 		case 3:   Change_flight_id(flights); break;
 		case 4:   Display_all_flights(flights); break;
-//		case 5:   Display_all_users(); break;
+		case 5:   Display_all_users(users); break;
 //		case 6:   Find_flight_by_request(); break;
 //		case 7:   Find_flights_city_hour(); break;
 		case 8:   Find_city_with_most_flights(flights); break;
-//		case 9:   Find_city_with_most_users(); break;
-//		case 10:   Record_in_file(); break; 
+		case 9:   Find_city_with_most_users(users); break;
+		case 10:   Record_in_file(flights, users); break; 
+		case 11:  exit(0);
 	}
 }
 
 void Make_flight_record(FlightData& flights){
 	FlightInfo flight;
-	Recorder Rec;
-	if(flight.read()){
-		Rec.Record_Flight(flight);
-		flights.add_flight(flight, 1);
-	}
+	if(flight.read()) flights.add_flight(flight,1);
 }
-void Make_user_record(/* --- */){
+void Make_user_record(UserData& users){
 	UserInfo user;
-	Recorder rec;
-	if(user.read()) user.display();
+	if(user.read()) users.add_user(user,1);
 }
 void Change_flight_id(FlightData& flights){
 	FlightInfo* flight;
@@ -58,7 +51,11 @@ void Change_flight_id(FlightData& flights){
 }
 void Display_all_flights(FlightData& flights){
 	flights.display();
-	cin.get();
+	system("pause");
+}
+void Display_all_users(UserData& users){
+	users.display();
+	system("pause");
 }
 void Find_city_with_most_flights(FlightData& flights){
 	string city;
@@ -66,4 +63,18 @@ void Find_city_with_most_flights(FlightData& flights){
 	if(flights.get_counter().count_flight_departure(city, count)){
 		cout << "Most frequent departure city is " << city <<". There are " << count << " flights.\n";
 	}
+}
+void Find_city_with_most_users(UserData& users){
+	string city;
+	int count;
+	if(users.get_counter().count_flight_frequent_requests(city, count)){
+		cout << "Most frequent fly requests are from " << city << ". There are " << count << " flight requests in " << city << '\n';
+	}
+}
+void Record_in_file(FlightData& flights, UserData users){
+	vector<FlightInfo> flight_data = flights.get_flights();
+	vector<UserInfo> user_data = users.get_users();
+	Recorder Rec;
+	for(int i = 0; i < flight_data.size(); ++i) Rec.Record_Flight(flight_data[i]);
+	for(int i = 0; i < user_data.size(); ++i) Rec.Record_User(user_data[i]);
 }

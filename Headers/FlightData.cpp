@@ -29,7 +29,7 @@ void FlightData::add_flight(){
 	this-> add_flight(flight);
 }
 
-void FlightData::add_flight(FlightInfo flight, bool auto_adjust_id){
+void FlightData::add_flight(FlightInfo& flight, bool auto_adjust_id){
 	bool interfere = false;
 	int index = 0;
 	for(int i = 0; i < flights_.size(); ++i){
@@ -41,7 +41,8 @@ void FlightData::add_flight(FlightInfo flight, bool auto_adjust_id){
 	if(auto_adjust_id){
 		flight.id_ = get_last_id() + 1;
 		FlightInfo::kLastFlightId_ = flight.id_ + 1;
-		add_flight(flight);
+		flights_.push_back(flight);
+		counter_.add_flight(flight);
 		return;
 	}
 	if(interfere){
@@ -96,7 +97,9 @@ vector<FlightInfo> FlightData::get_flights_by_arrival_city(string city){
 		if(flights_[i].route_.get_arrival() == city) flights_to_city.push_back(flights_[i]);
 	return flights_to_city;
 }
-
+vector<FlightInfo>& FlightData::get_flights(){
+	return flights_;
+}
 int FlightData::getsize(){
 	return flights_.size();
 }

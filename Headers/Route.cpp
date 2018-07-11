@@ -31,11 +31,6 @@ string Route::get_arrival() const{
 	return this-> arrival_;
 }
 
-string Route::get_as_string() const{
-	string route = this-> departure_ + " " + this-> arrival_;
-	return route;
-}
-
 void Route::set_route(const string& departure,const string& arrival){
 	this -> departure_ = departure;
 	this -> arrival_ = arrival;

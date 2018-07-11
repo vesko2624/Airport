@@ -1,6 +1,7 @@
 #include <vector>
 #include "FlightInfo.h"
-// Here will be #include "UserData.h"
+#include "UserInfo.h"
+
 using std::vector;
 
 #ifndef COUNTER_H
@@ -16,10 +17,11 @@ class Counter{
 	public:
 		Counter();
 		void add_flight(FlightInfo& flight);
-		void add_user();
+		void add_user(UserInfo& user);
 		bool count_flight_departure(string& city, int& num_flight) const;
-		bool count_flight_frequent_requests() const;
+		bool count_flight_frequent_requests(string& city, int& num_requests) const;
 	private:
-		vector<container> cities;
+		vector<container> cities_;
+		vector<container> requests_;
 };
 #endif

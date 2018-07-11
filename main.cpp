@@ -1,15 +1,14 @@
 #include "Airport.h"
 #include "Classes/Menu_func.h"
-#include "Classes/Recorder.h"
 //stanislav.dimov@quanterall.com
 bool running = true;
-Recorder Rec;
 
 int main(){
 	Counter counter;
 	FlightData flights(counter);
+	UserData users(counter);
     while(running){
-        make_choice(flights);
+        make_choice(flights, users);
     }
     return 0;
 }

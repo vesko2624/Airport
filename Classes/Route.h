@@ -21,7 +21,6 @@ class Route{
 		
 		string get_departure() const;
 		string get_arrival() const;
-		string get_as_string() const;
 	private:
 		string departure_, arrival_;
 };

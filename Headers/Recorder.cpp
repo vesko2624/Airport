@@ -15,8 +15,12 @@ Recorder::~Recorder(){
 }
 
 void Recorder::Record_Flight(FlightInfo& temp){
-	Flight_Output_File <<temp.id_ << "  " << temp.route_.get_departure() << " " << temp.route_.get_arrival() << " " << temp.departure_time_.get_as_string() << " " << temp.arrival_time_.get_as_string() << " " << temp.price_ << endl;
+	Flight_Output_File <<temp.id_ << "  " << temp.route_.get_departure() << " " << temp.route_.get_arrival() << " " << temp.departure_time_.get_as_string() << " " << temp.arrival_time_.get_as_string() << " " << temp.price_ << '\n';
 }
+void Recorder::Record_User(UserInfo& temp){
+	User_Output_File << temp.id_ << " " << temp.name_ << " " << temp.route_.get_departure() << " " << temp.route_.get_arrival() << " " << temp.departure_time_.get_as_string() << " " << temp.arrival_time_.get_as_string() << '\n';
+}
+
 bool Recorder::Read_Flight(FlightInfo& temp){
 	int id,day_d,month_d,year_d,hour_d,minute_d,day_a,month_a,year_a,hour_a,minute_a;
 	double price;
@@ -31,6 +35,15 @@ bool Recorder::Read_Flight(FlightInfo& temp){
 	return true;
 }
 
+bool Recorder::Read_User(UserInfo& temp){
+	int id,day_d,month_d,year_d,hour_d,minute_d,day_a,month_a,year_a,hour_a,minute_a;
+	string name,departure,arrival;
+	if(!(Input_File_Flights >> id >> name >> departure >> arrival >> day_d >> month_d >> year_d >> hour_d >> minute_d >> day_a >> month_a >> year_a >> hour_a >> minute_a)) return false;
+	temp.id_ = id;
+	temp.route_.set_route(departure,arrival);
+	temp.departure_time_.set_date(day_d,month_d,year_d,hour_d,minute_d);
+	temp.arrival_time_.set_date(day_a,month_a,year_a,hour_a,minute_a);
+}
 void Recorder::Reload_Flight_Records_file(){
 	Input_File_Flights.close();
 	Input_File_Flights.open("Flight_Records.txt");

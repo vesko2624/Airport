@@ -1,5 +1,6 @@
 #include <fstream>
 #include "FlightInfo.h"
+#include "UserInfo.h"
 using std::ofstream;
 using std::ifstream;
 
@@ -13,9 +14,9 @@ class Recorder{
 		ifstream Input_File_Users;
 	public:
 		void Record_Flight(FlightInfo&);
-		void Record_User();
+		void Record_User(UserInfo&);
 		bool Read_Flight(FlightInfo&);
-		void Read_User();
+		bool Read_User(UserInfo& temp);
 		void Reload_Flight_Records_file();
 		void Reload_User_Recors_file();
 		Recorder();

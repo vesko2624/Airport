@@ -14,7 +14,7 @@ class Date{
 		void display() const;
 		
 		void set_date(int day, int month, int year, int hour, int minute);
-		string get_as_string(); // not const because it actually update the date_string_
+		string get_as_string();
 	private:
 		int Day_,Month_,Year_,Hour_,Minute_;
 };

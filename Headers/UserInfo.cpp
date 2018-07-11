@@ -15,7 +15,7 @@ UserInfo::UserInfo(): id_(++UserInfo::kLastUserId_){
 bool UserInfo::read(){
 	bool valid = true;
 	cout << "User name:"<< TABS;
-	getline(cin, name_);
+	cin >> name_;
 	cout << "Flying from:"<< TABS ;
 	route_.read_departure();
 	
@@ -32,8 +32,8 @@ bool UserInfo::read(){
 	return valid;
 }
 void UserInfo::display(){
+	cout << "Request id:\t\t" << TABS << id_ << '\n';  
 	cout << "User name:\t\t\t\t" << name_ << '\n';
-	cout << "User id:\t\t" << TABS << id_ << '\n';  
 	
 	cout << "Requested departure city:\t\t";
 	route_.display_departure();
@@ -47,9 +47,9 @@ void UserInfo::display(){
 	cout << "Arrives not later than:\t" << TABS;
 	arrival_time_.display();
 }
-bool UserInfo::get_user_request(Route& route){
-	if(route_.get_departure().empty() || route_.get_arrival().empty()) return false;
+Route UserInfo::get_user_request(){
+	Route route;
 	route.set_departure(route_.get_departure());
 	route.set_arrival(route_.get_arrival());
-	return true;
+	return route;
 }

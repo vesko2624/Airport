@@ -15,7 +15,7 @@ class UserInfo{
 		
 		bool read();
 		void display();
-		bool get_user_request(Route& route);
+		Route get_user_request();
 	private:
 		static long long kLastUserId_;
 		string name_;
@@ -24,7 +24,7 @@ class UserInfo{
 		Date departure_time_, arrival_time_;
 		
 		friend class Recorder;
-//		friend class UserData;
+		friend class UserData;
 };
 
 #endif
