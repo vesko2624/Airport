@@ -19,6 +19,7 @@ class FlightData{
 		bool get_flight_by_id(FlightInfo* flight, const int& id);	
 		vector<FlightInfo> get_flights_by_departure_city(string city);
 		vector<FlightInfo> get_flights_by_arrival_city(string city);
+		int getsize();
 	private:
 		vector<FlightInfo> flights_;
 };

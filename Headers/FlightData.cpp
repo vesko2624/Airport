@@ -90,3 +90,7 @@ vector<FlightInfo> FlightData::get_flights_by_arrival_city(string city){
 		if(flights_[i].route_.get_arrival() == city) flights_to_city.push_back(flights_[i]);
 	return flights_to_city;
 }
+
+int FlightData::getsize(){
+	return flights_.size();
+}
