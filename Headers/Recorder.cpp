@@ -40,8 +40,9 @@ bool Recorder::Read_Flight(FlightInfo& temp){
 bool Recorder::Read_User(UserInfo& temp){
 	int id,day_d,month_d,year_d,hour_d,minute_d,day_a,month_a,year_a,hour_a,minute_a;
 	string name,departure,arrival;
-	if(!(Input_File_Flights >> id >> name >> departure >> arrival >> day_d >> month_d >> year_d >> hour_d >> minute_d >> day_a >> month_a >> year_a >> hour_a >> minute_a)) return false;
+	if(!(Input_File_Users >> id >> name >> departure >> arrival >> day_d >> month_d >> year_d >> hour_d >> minute_d >> day_a >> month_a >> year_a >> hour_a >> minute_a)) return false;
 	temp.id_ = id;
+	temp.name_ = name;
 	temp.route_.set_route(departure,arrival);
 	temp.departure_time_.set_date(day_d,month_d,year_d,hour_d,minute_d);
 	temp.arrival_time_.set_date(day_a,month_a,year_a,hour_a,minute_a);
@@ -53,20 +54,20 @@ void Recorder::Reload_Flight_Records_file(){
 
 void Recorder::Close_flight_folder(){
 	Flight_Output_File.close();
-	Flight_file = true;
+	Flight_file = false;
 }
 void Recorder::Close_user_folder(){
 	User_Output_File.close();
-	User_file = true;
+	User_file = false;
 }
 
 void Recorder::Open_flight_folder(){
 	Flight_Output_File.open( "DataBase/Flight_Records.txt");
-	Flight_file = false;
+	Flight_file = true;
 }
 void Recorder::Open_user_folder(){
-	User_Output_File.open( " Database/User_Records.txt");
-	User_file = false;
+	User_Output_File.open( "DataBase/User_Records.txt");
+	User_file = true;
 }
 
 void Recorder::Record_FlightData(FlightData& FlDt){

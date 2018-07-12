@@ -74,4 +74,5 @@ void Find_city_with_most_users(UserData& users){
 void Record_in_file(FlightData& flights,UserData& users){
 	Recorder Rec;
 	Rec.Record_FlightData(flights);
+	Rec.Record_UserData(users);
 }

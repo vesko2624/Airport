@@ -1,8 +1,12 @@
 #include "../Airport.h"
-#include "../Classes/FlightData.h"
+#include "../Classes/Recorder.h" 
 // Constructors
-FlightData::FlightData(Counter& counter){
-	this-> counter_ = counter;
+FlightData::FlightData(Counter& counter): counter_(counter){
+	Recorder Rec;
+	FlightInfo temp;
+	while(Rec.Read_Flight(temp)){
+		this -> add_flight(temp,1);
+	}
 }
 
 // Methods

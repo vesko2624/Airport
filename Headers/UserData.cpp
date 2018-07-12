@@ -1,8 +1,12 @@
 #include "../Airport.h"
-#include "../Classes/UserData.h"
+#include "../Classes/Recorder.h"
 // Constructors
-UserData::UserData(Counter& counter){
-	this-> counter_ = counter;
+UserData::UserData(Counter& counter): counter_(counter){
+	Recorder Rec;
+	UserInfo temp;
+	while(Rec.Read_User(temp)){
+		this -> add_user(temp,1);
+	}
 }
 
 // Methods
