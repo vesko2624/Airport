@@ -1,4 +1,5 @@
 mkdir Objects
+mkdir DataBase
 g++ -c main.cpp -o Objects/main.o
 g++ -c Headers/Airport.cpp -o Objects/Airport.o
 g++ -c Headers/Counter.cpp -o Objects/Counter.o

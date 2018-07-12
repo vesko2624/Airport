@@ -1,6 +1,16 @@
 build:
 	-mkdir -p Objects
+	-mkdir -p DataBase
+	-touch DataBase/Flight_Records.txt
+	-touch DataBase/User_Records.txt
 	-make compile
+
+clean:
+	-rm -r -f Objects
+	-rm -r -f DataBase
+	-rm -f run
+	-rm -f run.exe
+
 OBJECTS = Objects/Airport.o Objects/Counter.o Objects/Date.o Objects/FlightData.o Objects/FlightInfo.o Objects/main.o Objects/Menu_func.o Objects/PathFinder.o Objects/Recorder.o Objects/Route.o Objects/UserData.o Objects/UserInfo.o
 
 compile: $(OBJECTS)
