@@ -1,6 +1,9 @@
+build:
+	-mkdir -p Objects
+	-make compile
 OBJECTS = Objects/Airport.o Objects/Counter.o Objects/Date.o Objects/FlightData.o Objects/FlightInfo.o Objects/main.o Objects/Menu_func.o Objects/PathFinder.o Objects/Recorder.o Objects/Route.o Objects/UserData.o Objects/UserInfo.o
 
-build: $(OBJECTS)
+compile: $(OBJECTS)
 	$(CXX) -o run $(OBJECTS)
 
 Objects/main.o: main.cpp Classes/Menu_func.h

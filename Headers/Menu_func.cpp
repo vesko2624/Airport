@@ -71,10 +71,7 @@ void Find_city_with_most_users(UserData& users){
 		cout << "Most frequent fly requests are from " << city << ". There are " << count << " flight requests in " << city << '\n';
 	}
 }
-void Record_in_file(FlightData& flights, UserData users){
-	vector<FlightInfo> flight_data = flights.get_flights();
-	vector<UserInfo> user_data = users.get_users();
+void Record_in_file(FlightData& flights,UserData& users){
 	Recorder Rec;
-	for(int i = 0; i < flight_data.size(); ++i) Rec.Record_Flight(flight_data[i]);
-	for(int i = 0; i < user_data.size(); ++i) Rec.Record_User(user_data[i]);
+	Rec.Record_FlightData(flights);
 }

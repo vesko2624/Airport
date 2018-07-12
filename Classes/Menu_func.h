@@ -16,6 +16,6 @@ void Find_flight_by_request();
 void Find_flights_city_hour();
 void Find_city_with_most_flights(FlightData& flights);
 void Find_city_with_most_users(UserData& users); 
-void Record_in_file(FlightData& flights, UserData users); 
+void Record_in_file(FlightData& flights,UserData& users); 
 
 #endif

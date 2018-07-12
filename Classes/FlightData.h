@@ -26,6 +26,8 @@ class FlightData{
 	private:
 		vector<FlightInfo> flights_;
 		Counter counter_;
+
+		friend class Recorder;
 };
 
 #endif

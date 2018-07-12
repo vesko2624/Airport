@@ -2,14 +2,16 @@
 using namespace std;
 
 Recorder::Recorder(){
-	Flight_Output_File.open("DataBase/Flight_Records.txt",ios::app);
-	User_Output_File.open("DataBase/User_Records.txt",ios::app);
+	User_file = false;
+	Flight_file = false;
 	Input_File_Flights.open("DataBase/Flight_Records.txt");
 	Input_File_Users.open("DataBase/User_Records.txt");
 }
 Recorder::~Recorder(){
-	Flight_Output_File.close();
-	User_Output_File.close();
+	if(Flight_file)
+		Flight_Output_File.close();
+	if(User_file)
+		User_Output_File.close();
 	Input_File_Flights.close();
 	Input_File_Users.close();
 }
@@ -47,4 +49,36 @@ bool Recorder::Read_User(UserInfo& temp){
 void Recorder::Reload_Flight_Records_file(){
 	Input_File_Flights.close();
 	Input_File_Flights.open("Flight_Records.txt");
+}
+
+void Recorder::Close_flight_folder(){
+	Flight_Output_File.close();
+	Flight_file = true;
+}
+void Recorder::Close_user_folder(){
+	User_Output_File.close();
+	User_file = true;
+}
+
+void Recorder::Open_flight_folder(){
+	Flight_Output_File.open( "DataBase/Flight_Records.txt");
+	Flight_file = false;
+}
+void Recorder::Open_user_folder(){
+	User_Output_File.open( " Database/User_Records.txt");
+	User_file = false;
+}
+
+void Recorder::Record_FlightData(FlightData& FlDt){
+	Open_flight_folder();
+	for(int i = 0;i < FlDt.flights_.size(); i++)
+		Record_Flight(FlDt.flights_[i]);
+	Close_flight_folder();
+}
+
+void Recorder::Record_UserData(UserData& UsrDt){
+	Open_user_folder();
+	for(int i = 0;i < UsrDt.users_.size(); i++)
+		Record_User(UsrDt.users_[i]);
+	Close_user_folder();
 }

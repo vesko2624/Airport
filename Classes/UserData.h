@@ -26,6 +26,8 @@ class UserData{
 	private:
 		vector<UserInfo> users_;
 		Counter counter_;
+
+		friend class Recorder;
 };
 
 #endif

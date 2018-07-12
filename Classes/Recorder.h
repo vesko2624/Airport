@@ -1,6 +1,6 @@
 #include <fstream>
-#include "FlightInfo.h"
-#include "UserInfo.h"
+#include "FlightData.h"
+#include "UserData.h"
 using std::ofstream;
 using std::ifstream;
 
@@ -12,7 +12,14 @@ class Recorder{
 		ofstream User_Output_File;
 		ifstream Input_File_Flights;
 		ifstream Input_File_Users;
+		bool User_file,Flight_file;
 	public:
+		void Record_FlightData(FlightData&);
+		void Record_UserData(UserData&);
+		void Open_flight_folder();
+		void Open_user_folder();
+		void Close_flight_folder();
+		void Close_user_folder();
 		void Record_Flight(FlightInfo&);
 		void Record_User(UserInfo&);
 		bool Read_Flight(FlightInfo&);
@@ -23,3 +30,4 @@ class Recorder{
 		~Recorder();
 };
 #endif
+
