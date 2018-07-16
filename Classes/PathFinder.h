@@ -12,9 +12,9 @@ using std::vector; using std::pair;
 #define _PathFinder_
 
 struct a_flight{
-	a_flight(const int& id, const int& city, const Date& time, const double& price): id(id), city(city), arrival_time(time), price(price){}
+	a_flight(const int& id, const int& city, const Date& departure_time,const Date& arrival_time, const double& price): id(id), city(city), departure_time(departure_time), arrival_time(arrival_time), price(price){}
 	int id, city;
-	Date arrival_time;
+	Date departure_time, arrival_time;
 	double price;
 };
 

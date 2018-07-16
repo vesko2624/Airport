@@ -15,7 +15,7 @@ int get_city(const vector<pair<int, string>>& cities, const string& city){
 
 vector<complexRoute> getRoute(vector<a_flight>* connections, const int& size, const int& start, const int& end){
 	vector<complexRoute> complex_routes;
-	if(start > size || end > size - 1 || !get_to_city(complex_routes, {{0, end, Date(), 0}}, connections, size, start, end)) return {};
+	if(start > size || end > size - 1 || !get_to_city(complex_routes, {{0, end, Date(), Date(), 0}}, connections, size, start, end)) return {};
 	return complex_routes;
 }
 
@@ -40,7 +40,7 @@ bool get_to_city(vector<complexRoute>& complex_routes, vector<a_flight> calculat
 			has_other_cities = true;
 			
 			// Check the date
-			if(connections[calculations.back().city][i].arrival_time < calculations.back().arrival_time){
+			if(connections[calculations.back().city][i].arrival_time < calculations.back().departure_time){
 				vector<a_flight> temp = calculations;
 				temp.push_back(connections[calculations.back().city][i]);
 				if(!get_to_city(complex_routes, temp, connections, size, start ,end)) continue;
@@ -57,7 +57,7 @@ FlightData PathFinder::get_best_flight(const string& departure, const string& ar
 	vector<a_flight> connections_[flights_.size() + 2];
 	vector<pair<int, string>> cities = data_.get_counter().get_list(flights_);
 	for(int i = 0; i < flights_.size(); ++i){
-		connections_[get_city(cities, flights_[i].route_.get_arrival())].push_back(a_flight(flights_[i].id_, get_city(cities, flights_[i].route_.get_departure()), flights_[i].arrival_time_, flights_[i].price_));
+		connections_[get_city(cities, flights_[i].route_.get_arrival())].push_back(a_flight(flights_[i].id_, get_city(cities, flights_[i].route_.get_departure()), flights_[i].departure_time_, flights_[i].arrival_time_, flights_[i].price_));
 	}
 	pair<int, int> minFlights;
 	vector<complexRoute> temp = getRoute(connections_, cities.size() + 2, get_city(cities, departure), get_city(cities, arrival));
@@ -91,7 +91,7 @@ FlightData PathFinder::get_best_price(const string& departure, const string& arr
 	vector<a_flight> connections_[flights_.size() + 2];
 	vector<pair<int, string>> cities = data_.get_counter().get_list(flights_);
 	for(int i = 0; i < flights_.size(); ++i){
-		connections_[get_city(cities, flights_[i].route_.get_arrival())].push_back(a_flight(flights_[i].id_, get_city(cities, flights_[i].route_.get_departure()), flights_[i].arrival_time_, flights_[i].price_));
+		connections_[get_city(cities, flights_[i].route_.get_arrival())].push_back(a_flight(flights_[i].id_, get_city(cities, flights_[i].route_.get_departure()), flights_[i].departure_time_, flights_[i].arrival_time_, flights_[i].price_));
 	}
 	pair<int, int> minPrice;
 	vector<complexRoute> temp = getRoute(connections_, cities.size() + 2, get_city(cities, departure), get_city(cities, arrival));
@@ -125,7 +125,7 @@ vector<FlightData> PathFinder::get_all_flights(const string& departure, const st
 	vector<a_flight> connections_[flights_.size() + 2];
 	vector<pair<int, string>> cities = data_.get_counter().get_list(flights_);
 	for(int i = 0; i < flights_.size(); ++i){
-		connections_[get_city(cities, flights_[i].route_.get_arrival())].push_back(a_flight(flights_[i].id_, get_city(cities, flights_[i].route_.get_departure()), flights_[i].arrival_time_, flights_[i].price_));
+		connections_[get_city(cities, flights_[i].route_.get_arrival())].push_back(a_flight(flights_[i].id_, get_city(cities, flights_[i].route_.get_departure()), flights_[i].departure_time_, flights_[i].arrival_time_, flights_[i].price_));
 	}
 	vector<complexRoute> temp = getRoute(connections_, cities.size() + 2, get_city(cities, departure), get_city(cities, arrival));
 	for(int i = 0; i < temp.size(); ++i){
