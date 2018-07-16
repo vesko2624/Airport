@@ -1,5 +1,4 @@
 #include "../Classes/Recorder.h"
-using namespace std;
 
 Recorder::Recorder(){
 	User_file = false;
@@ -70,16 +69,16 @@ void Recorder::Open_user_folder(){
 	User_file = true;
 }
 
-void Recorder::Record_FlightData(FlightData& FlDt){
+void Recorder::Record_FlightData(FlightData& flights){
 	Open_flight_folder();
-	for(int i = 0;i < FlDt.flights_.size(); i++)
-		Record_Flight(FlDt.flights_[i]);
+	for(int i = 0;i < flights.flights_.size(); ++i)
+		Record_Flight(flights.flights_[i]);
 	Close_flight_folder();
 }
 
-void Recorder::Record_UserData(UserData& UsrDt){
+void Recorder::Record_UserData(UserData& users){
 	Open_user_folder();
-	for(int i = 0;i < UsrDt.users_.size(); i++)
-		Record_User(UsrDt.users_[i]);
+	for(int i = 0;i < users.users_.size(); ++i)
+		Record_User(users.users_[i]);
 	Close_user_folder();
 }
