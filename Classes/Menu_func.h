@@ -1,7 +1,5 @@
 #include <iostream>
 #include "PathFinder.h"
-#include "FlightData.h"
-#include "UserData.h"
 #include "Recorder.h"
 
 #ifndef _Menufunc_
