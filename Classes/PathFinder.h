@@ -2,8 +2,10 @@
 #include <algorithm>
 #include <vector>
 #include <string>
+#include <unordered_map>
 #include "../Airport.h"
 #include "FlightData.h"
+using std::unordered_map;
 using std::string;
 using std::cout; using std::cin;
 using std::vector; using std::pair;
@@ -32,7 +34,7 @@ struct BestFlight{
 	complexRoute byFlights;
 	complexRoute byPrice;
 };
-
+int get_city(unordered_map<string, int>&, const string&);
 bool get_to_city(vector<complexRoute>&, vector<a_flight>, vector<a_flight>*, const int&, const int&, const int&);
 vector<complexRoute> getRoute(vector<a_flight>*, const int&, const int&, const int&);
 

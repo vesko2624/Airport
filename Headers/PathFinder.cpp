@@ -5,12 +5,9 @@ PathFinder::PathFinder(FlightData& flights): data_(flights), flights_(flights.ge
 
 
 // Methods
-int get_city(const vector<pair<int, string>>& cities, const string& city){
-	int index = -1;
-	for(int i = 0; i < cities.size(); ++i){
-		if(cities[i].second == city) index = cities[i].first;
-	}
-	return index;
+int get_city(unordered_map<string, int>& cities, const string& city){
+	int index = cities[city];
+	return index? index : -1;
 }
 
 vector<complexRoute> getRoute(vector<a_flight>* connections, const int& size, const int& start, const int& end){
@@ -55,7 +52,7 @@ FlightData PathFinder::get_best_flight(const string& departure, const string& ar
 	Counter temp_counter;
 	FlightData flight_route(temp_counter);
 	vector<a_flight> connections_[flights_.size() + 2];
-	vector<pair<int, string>> cities = data_.get_counter().get_list(flights_);
+	unordered_map<string, int> cities = data_.get_counter().get_list();
 	for(int i = 0; i < flights_.size(); ++i){
 		connections_[get_city(cities, flights_[i].route_.get_arrival())].push_back(a_flight(flights_[i].id_, get_city(cities, flights_[i].route_.get_departure()), flights_[i].departure_time_, flights_[i].arrival_time_, flights_[i].price_));
 	}
@@ -89,7 +86,7 @@ FlightData PathFinder::get_best_price(const string& departure, const string& arr
 	Counter temp_counter;
 	FlightData flight_route(temp_counter);
 	vector<a_flight> connections_[flights_.size() + 2];
-	vector<pair<int, string>> cities = data_.get_counter().get_list(flights_);
+	unordered_map<string, int> cities = data_.get_counter().get_list();
 	for(int i = 0; i < flights_.size(); ++i){
 		connections_[get_city(cities, flights_[i].route_.get_arrival())].push_back(a_flight(flights_[i].id_, get_city(cities, flights_[i].route_.get_departure()), flights_[i].departure_time_, flights_[i].arrival_time_, flights_[i].price_));
 	}
@@ -123,7 +120,7 @@ vector<FlightData> PathFinder::get_all_flights(const string& departure, const st
 	Counter temp_counter;
 	vector<FlightData> flight_routes;
 	vector<a_flight> connections_[flights_.size() + 2];
-	vector<pair<int, string>> cities = data_.get_counter().get_list(flights_);
+	unordered_map<string, int> cities = data_.get_counter().get_list();
 	for(int i = 0; i < flights_.size(); ++i){
 		connections_[get_city(cities, flights_[i].route_.get_arrival())].push_back(a_flight(flights_[i].id_, get_city(cities, flights_[i].route_.get_departure()), flights_[i].departure_time_, flights_[i].arrival_time_, flights_[i].price_));
 	}

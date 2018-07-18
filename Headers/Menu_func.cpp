@@ -121,7 +121,6 @@ void seek_for_route(FlightData& flights){
 				cout << "\n------------------------- Route " << i + 1 << " -------------------------\n";
 				all_routes[i].display();
 			}
-				cout << "\n---------------------------------------------------------\n";
 	}
 }
 
@@ -140,7 +139,6 @@ void find_flights_city_hour(FlightData& data){
 			flights[i].display();
 		}
 	}
-	cout << "------------------------------------------------------------\n";
 }
 
 void find_city_with_most_flights(FlightData& flights){
