@@ -22,7 +22,7 @@ FlightData = $(Airport) $(Recorder)
 UserData = $(Airport) $(Recorder)
 PathFinder = $(Airport) $(FlightData) Headers/PathFinder.cpp Classes/PathFinder.h
 Menu = $(Airport) $(PathFinder) $(Recorder) Headers/Menu_func.cpp Classes/Menu_func.h
-Main = $(Airport) $(Menu)
+Main = $(Airport) $(Menu) main.cpp
 OBJECTS = Objects/Airport.o Objects/Counter.o Objects/Date.o Objects/FlightData.o Objects/FlightInfo.o Objects/main.o Objects/Menu_func.o Objects/PathFinder.o Objects/Recorder.o Objects/Route.o Objects/UserData.o Objects/UserInfo.o
 
 compile: $(OBJECTS)
